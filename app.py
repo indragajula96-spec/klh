@@ -1,9 +1,8 @@
 import streamlit as st
-st.write("App started successfully")
-import os
 from openai import OpenAI
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Read API key from Streamlit Secrets
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 st.title("Teacher's Lesson Plan Architect")
 
@@ -12,7 +11,7 @@ subject = st.text_input("Enter Subject")
 topic = st.text_input("Enter Topic")
 
 if st.button("Generate Lesson Plan"):
-    
+
     prompt = f"""
     Generate a structured 40-minute lesson plan for:
     Grade: {grade}
